@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/exchangerate/main/json-schema/exchangerate-schema.json",
+  "title": "ExchangeRate-API Schemas",
+  "description": "JSON Schema definitions for ExchangeRate-API v6 request and response objects",
+  "$defs": {
+    "ResultSuccess": {
+      "type": "string",
+      "const": "success",
+      "description": "Indicates the request was successful"
+    },
+    "ResultError": {
+      "type": "string",
+      "const": "error",
+      "description": "Indicates the request failed"
+    },
+    "CurrencyCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "minLength": 3,
+      "maxLength": 3,
+      "description": "ISO 4217 three-letter currency code",
+      "examples": ["USD", "EUR", "GBP", "JPY", "AUD"]
+    },
+    "ConversionRates": {
+      "type": "object",
+      "description": "Object mapping ISO 4217 currency codes to exchange rate values relative to the base currency",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      },
+      "examples": [
+        {
+          "USD": 1,
+          "EUR": 0.8876,
+          "GBP": 0.7901,
+          "JPY": 107.53
+        }
+      ]
+    },
+    "BaseMetadata": {
+      "type": "object",
+      "description": "Common metadata fields present in all successful API responses",
+      "properties": {
+        "result": { "$ref": "#/$defs/ResultSuccess" },
+        "documentation": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the API documentation",
+          "examples": ["https://www.exchangerate-api.com/docs"]
+        },
+        "terms_of_use": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the terms of use",
+          "examples": ["https://www.exchangerate-api.com/terms"]
+        }
+      },
+      "required": ["result"]
+    },
+    "TimestampFields": {
+      "type": "object",
+      "description": "Update timestamp fields included in current rate responses",
+      "properties": {
+        "time_last_update_unix": {
+          "type": "integer",
+          "description": "Unix epoch timestamp of the last exchange rate update",
+          "examples": [1585267200]
+        },
+        "time_last_update_utc": {
+          "type": "string",
+          "description": "UTC datetime string of the last exchange rate update",
+          "examples": ["Fri, 27 Mar 2020 00:00:00 +0000"]
+        },
+        "time_next_update_unix": {
+          "type": "integer",
+          "description": "Unix epoch timestamp of the next scheduled exchange rate update",
+          "examples": [1585353600]
+        },
+        "time_next_update_utc": {
+          "type": "string",
+          "description": "UTC datetime string of the next scheduled update",
+          "examples": ["Sat, 28 Mar 2020 00:00:00 +0000"]
+        }
+      }
+    },
+    "LatestRatesResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/BaseMetadata" },
+        { "$ref": "#/$defs/TimestampFields" },
+        {
+          "type": "object",
+          "description": "Response from the latest exchange rates endpoint",
+          "properties": {
+            "base_code": {
+              "$ref": "#/$defs/CurrencyCode",
+              "description": "The base currency code provided in the request"
+            },
+            "conversion_rates": {
+              "$ref": "#/$defs/ConversionRates"
+            }
+          },
+          "required": ["base_code", "conversion_rates"]
+        }
+      ],
+      "examples": [
+        {
+          "result": "success",
+          "documentation": "https://www.exchangerate-api.com/docs",
+          "terms_of_use": "https://www.exchangerate-api.com/terms",
+          "time_last_update_unix": 1585267200,
+          "time_last_update_utc": "Fri, 27 Mar 2020 00:00:00 +0000",
+          "time_next_update_unix": 1585353600,
+          "time_next_update_utc": "Sat, 28 Mar 2020 00:00:00 +0000",
+          "base_code": "USD",
+          "conversion_rates": {
+            "USD": 1,
+            "EUR": 0.8876,
+            "GBP": 0.7901,
+            "JPY": 107.53
+          }
+        }
+      ]
+    },
+    "PairRateResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/BaseMetadata" },
+        { "$ref": "#/$defs/TimestampFields" },
+        {
+          "type": "object",
+          "description": "Response from the pair conversion rate endpoint",
+          "properties": {
+            "base_code": {
+              "$ref": "#/$defs/CurrencyCode",
+              "description": "The source currency code"
+            },
+            "target_code": {
+              "$ref": "#/$defs/CurrencyCode",
+              "description": "The target currency code"
+            },
+            "conversion_rate": {
+              "type": "number",
+              "description": "The exchange rate from base to target currency",
+              "minimum": 0,
+              "examples": [0.8412]
+            }
+          },
+          "required": ["base_code", "target_code", "conversion_rate"]
+        }
+      ],
+      "examples": [
+        {
+          "result": "success",
+          "documentation": "https://www.exchangerate-api.com/docs",
+          "terms_of_use": "https://www.exchangerate-api.com/terms",
+          "time_last_update_unix": 1585267200,
+          "time_last_update_utc": "Fri, 27 Mar 2020 00:00:00 +0000",
+          "time_next_update_unix": 1585353600,
+          "time_next_update_utc": "Sat, 28 Mar 2020 00:00:00 +0000",
+          "base_code": "EUR",
+          "target_code": "GBP",
+          "conversion_rate": 0.8412
+        }
+      ]
+    },
+    "PairConversionResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/PairRateResponse" },
+        {
+          "type": "object",
+          "description": "Response from the pair conversion endpoint with amount",
+          "properties": {
+            "conversion_result": {
+              "type": "number",
+              "description": "The converted amount result",
+              "minimum": 0,
+              "examples": [5.8884]
+            }
+          },
+          "required": ["conversion_result"]
+        }
+      ]
+    },
+    "HistoricalRatesResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/BaseMetadata" },
+        {
+          "type": "object",
+          "description": "Response from the historical exchange rates endpoint",
+          "properties": {
+            "base_code": {
+              "$ref": "#/$defs/CurrencyCode"
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1990,
+              "description": "Year of the historical data",
+              "examples": [2023]
+            },
+            "month": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12,
+              "description": "Month of the historical data",
+              "examples": [3]
+            },
+            "day": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 31,
+              "description": "Day of the historical data",
+              "examples": [15]
+            },
+            "requested_time": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp for the requested date",
+              "examples": ["2023-03-15T00:00:01+00:00"]
+            },
+            "conversion_rates": {
+              "$ref": "#/$defs/ConversionRates"
+            }
+          },
+          "required": ["base_code", "year", "month", "day", "conversion_rates"]
+        }
+      ]
+    },
+    "SupportedCodesResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/BaseMetadata" },
+        {
+          "type": "object",
+          "description": "Response from the supported codes endpoint",
+          "properties": {
+            "supported_codes": {
+              "type": "array",
+              "description": "Array of [currencyCode, currencyName] pairs",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "prefixItems": [
+                  {
+                    "$ref": "#/$defs/CurrencyCode",
+                    "description": "ISO 4217 currency code"
+                  },
+                  {
+                    "type": "string",
+                    "description": "Full English name of the currency"
+                  }
+                ]
+              },
+              "examples": [
+                [["USD", "US Dollar"], ["EUR", "Euro"], ["GBP", "Pound Sterling"]]
+              ]
+            }
+          },
+          "required": ["supported_codes"]
+        }
+      ]
+    },
+    "QuotaResponse": {
+      "allOf": [
+        { "$ref": "#/$defs/BaseMetadata" },
+        {
+          "type": "object",
+          "description": "Response from the quota endpoint",
+          "properties": {
+            "plan_quota": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Total API requests allowed per billing period",
+              "examples": [1500]
+            },
+            "requests_remaining": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "API requests remaining in the current billing period",
+              "examples": [1243]
+            },
+            "refresh_day_of_month": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 31,
+              "description": "Day of month when the quota resets",
+              "examples": [1]
+            }
+          },
+          "required": ["plan_quota", "requests_remaining", "refresh_day_of_month"]
+        }
+      ]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "description": "Error response returned when a request fails",
+      "properties": {
+        "result": { "$ref": "#/$defs/ResultError" },
+        "error-type": {
+          "type": "string",
+          "enum": [
+            "unsupported-code",
+            "malformed-request",
+            "invalid-key",
+            "inactive-account",
+            "quota-reached"
+          ],
+          "description": "Machine-readable error code indicating the failure reason"
+        }
+      },
+      "required": ["result", "error-type"],
+      "examples": [
+        { "result": "error", "error-type": "invalid-key" },
+        { "result": "error", "error-type": "quota-reached" },
+        { "result": "error", "error-type": "unsupported-code" }
+      ]
+    }
+  }
+}

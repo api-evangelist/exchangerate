@@ -57,6 +57,14 @@ apis:
         url: rate-limits/exchangerate-rate-limits.yml
       - type: FinOps
         url: finops/exchangerate-finops.yml
+      - type: OpenAPI
+        url: openapi/exchangerate-openapi.yml
+      - type: JSONSchema
+        url: json-schema/exchangerate-schema.json
+      - type: Vocabulary
+        url: vocabulary/exchangerate-vocabulary.yml
+      - type: JSONLDContext
+        url: json-ld/exchangerate-context.jsonld
     contact:
       - FN: ExchangeRate-API Support
         email: support@exchangerate-api.com

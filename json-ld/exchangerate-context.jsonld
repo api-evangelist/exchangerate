@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "xr": "https://www.exchangerate-api.com/vocab#",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/",
+
+    "ExchangeRateService": "xr:ExchangeRateService",
+    "CurrencyExchangeRate": "xr:CurrencyExchangeRate",
+    "CurrencyPairConversion": "xr:CurrencyPairConversion",
+    "HistoricalExchangeRate": "xr:HistoricalExchangeRate",
+    "SupportedCurrency": "xr:SupportedCurrency",
+    "ApiQuota": "xr:ApiQuota",
+
+    "result": "xr:result",
+    "base_code": {
+      "@id": "xr:baseCurrencyCode",
+      "@type": "fibo:CurrencyIdentifier"
+    },
+    "target_code": {
+      "@id": "xr:targetCurrencyCode",
+      "@type": "fibo:CurrencyIdentifier"
+    },
+    "conversion_rates": "xr:conversionRates",
+    "conversion_rate": {
+      "@id": "xr:conversionRate",
+      "@type": "xsd:decimal"
+    },
+    "conversion_result": {
+      "@id": "xr:conversionResult",
+      "@type": "xsd:decimal"
+    },
+    "time_last_update_unix": {
+      "@id": "xr:timeLastUpdateUnix",
+      "@type": "xsd:integer"
+    },
+    "time_last_update_utc": {
+      "@id": "xr:timeLastUpdateUtc",
+      "@type": "xsd:string"
+    },
+    "time_next_update_unix": {
+      "@id": "xr:timeNextUpdateUnix",
+      "@type": "xsd:integer"
+    },
+    "time_next_update_utc": {
+      "@id": "xr:timeNextUpdateUtc",
+      "@type": "xsd:string"
+    },
+    "supported_codes": "xr:supportedCodes",
+    "plan_quota": {
+      "@id": "xr:planQuota",
+      "@type": "xsd:integer"
+    },
+    "requests_remaining": {
+      "@id": "xr:requestsRemaining",
+      "@type": "xsd:integer"
+    },
+    "refresh_day_of_month": {
+      "@id": "xr:refreshDayOfMonth",
+      "@type": "xsd:integer"
+    },
+    "documentation": {
+      "@id": "schema:documentation",
+      "@type": "@id"
+    },
+    "terms_of_use": {
+      "@id": "schema:termsOfService",
+      "@type": "@id"
+    },
+    "error-type": "xr:errorType",
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://www.exchangerate-api.com",
+      "@type": ["schema:WebAPI", "ExchangeRateService"],
+      "schema:name": "ExchangeRate-API",
+      "schema:description": "Real-time and historical currency exchange rates for 165 currencies across 200 countries. Available since 2010 with over 99.99% uptime.",
+      "schema:url": "https://www.exchangerate-api.com",
+      "schema:documentation": "https://www.exchangerate-api.com/docs/overview",
+      "schema:termsOfService": "https://www.exchangerate-api.com/terms",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "ExchangeRate-API",
+        "schema:email": "support@exchangerate-api.com",
+        "schema:url": "https://www.exchangerate-api.com"
+      },
+      "schema:offers": [
+        {
+          "@type": "schema:Offer",
+          "schema:name": "Free Plan",
+          "schema:description": "1,500 requests per month with daily rate updates",
+          "schema:price": "0",
+          "schema:priceCurrency": "USD"
+        },
+        {
+          "@type": "schema:Offer",
+          "schema:name": "Pro Plan",
+          "schema:description": "Higher request quotas with hourly or 5-minute update frequencies"
+        }
+      ],
+      "schema:availableChannel": {
+        "@type": "schema:ServiceChannel",
+        "schema:serviceUrl": "https://v6.exchangerate-api.com/v6",
+        "schema:availableLanguage": "en"
+      }
+    }
+  ]
+}

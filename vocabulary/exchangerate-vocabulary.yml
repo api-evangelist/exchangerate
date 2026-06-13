@@ -1,0 +1,157 @@
+vocabulary:
+  - term: base_code
+    definition: >
+      The ISO 4217 three-letter currency code used as the reference currency for exchange
+      rate calculations. All rates in the response are expressed as units of the target
+      currency per one unit of the base currency.
+    type: field
+    example: USD
+
+  - term: target_code
+    definition: >
+      The ISO 4217 three-letter currency code for the destination currency in a pair
+      conversion request.
+    type: field
+    example: GBP
+
+  - term: conversion_rates
+    definition: >
+      A JSON object mapping ISO 4217 currency codes to their exchange rate values
+      relative to the base currency. Each value represents how many units of that
+      currency equal one unit of the base currency.
+    type: field
+
+  - term: conversion_rate
+    definition: >
+      The exchange rate from a base currency to a target currency in a pair conversion
+      response. Expressed as units of target currency per one unit of base currency.
+    type: field
+    example: 0.8412
+
+  - term: conversion_result
+    definition: >
+      The result of multiplying the requested amount by the conversion_rate. Returned
+      only when an amount is specified in a pair conversion request.
+    type: field
+    example: 5.8884
+
+  - term: supported_codes
+    definition: >
+      An array of two-element arrays, each containing an ISO 4217 currency code and
+      the full English name of that currency. Lists all 165 currencies supported by
+      the API.
+    type: field
+
+  - term: time_last_update_unix
+    definition: >
+      Unix epoch timestamp (seconds since January 1, 1970 UTC) indicating when the
+      current set of exchange rates was last updated.
+    type: field
+    example: 1585267200
+
+  - term: time_last_update_utc
+    definition: >
+      Human-readable UTC datetime string indicating when the exchange rates were last
+      updated.
+    type: field
+    example: "Fri, 27 Mar 2020 00:00:00 +0000"
+
+  - term: time_next_update_unix
+    definition: >
+      Unix epoch timestamp indicating when the exchange rates will next be updated,
+      depending on the subscription plan (daily, hourly, or every 5 minutes).
+    type: field
+
+  - term: time_next_update_utc
+    definition: >
+      Human-readable UTC datetime string indicating when the next exchange rate update
+      will occur.
+    type: field
+
+  - term: plan_quota
+    definition: >
+      The total number of API requests allowed per billing period under the current
+      subscription plan. The free tier provides 1,500 requests per month.
+    type: field
+    example: 1500
+
+  - term: requests_remaining
+    definition: >
+      The number of API requests that can still be made within the current billing period
+      before the quota is reached.
+    type: field
+    example: 1243
+
+  - term: refresh_day_of_month
+    definition: >
+      The day of the month (1–31) on which the request quota resets for the current
+      billing period.
+    type: field
+    example: 1
+
+  - term: result
+    definition: >
+      A field present in all API responses indicating whether the request was successful
+      ("success") or failed ("error").
+    type: field
+    values:
+      - success
+      - error
+
+  - term: error-type
+    definition: >
+      A machine-readable string returned in error responses that identifies the specific
+      reason the request failed.
+    type: field
+    values:
+      - unsupported-code: The provided currency code is not supported
+      - malformed-request: The request URL structure is invalid
+      - invalid-key: The API key is not recognized
+      - inactive-account: The email address associated with the account has not been confirmed
+      - quota-reached: The monthly request quota for the plan has been exhausted
+
+  - term: ISO 4217
+    definition: >
+      The international standard defining three-letter codes for world currencies
+      (e.g. USD for US Dollar, EUR for Euro, GBP for British Pound Sterling). All
+      currency codes used by ExchangeRate-API follow this standard.
+    type: concept
+
+  - term: exchange rate
+    definition: >
+      The value of one currency expressed in terms of another currency. For example,
+      an exchange rate of 0.84 for EUR/GBP means 1 Euro buys 0.84 British Pounds.
+    type: concept
+
+  - term: base currency
+    definition: >
+      The reference or starting currency in an exchange rate calculation. Exchange rates
+      for all other currencies are expressed relative to one unit of the base currency.
+    type: concept
+
+  - term: pair conversion
+    definition: >
+      A currency exchange operation involving exactly two currencies (a base and a target).
+      The pair conversion endpoint provides a focused response with only the rate between
+      those two currencies rather than all 165 supported currencies.
+    type: concept
+
+  - term: historical data
+    definition: >
+      Exchange rates recorded on past dates. ExchangeRate-API provides historical data
+      back to January 1, 1990. Access to historical data requires a paid subscription plan.
+    type: concept
+
+  - term: quota
+    definition: >
+      The maximum number of API requests allowed per billing period. Quotas vary by
+      subscription plan, from 1,500 per month on the free tier to higher limits on
+      paid plans.
+    type: concept
+
+  - term: API key
+    definition: >
+      A unique alphanumeric token assigned to each account that authenticates API
+      requests. Can be passed either embedded in the URL path or as a Bearer token
+      in the Authorization HTTP header.
+    type: concept
