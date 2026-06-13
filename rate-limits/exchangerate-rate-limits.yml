@@ -1,0 +1,49 @@
+name: ExchangeRate-API Rate Limits
+description: Rate limiting policies for ExchangeRate-API across plan tiers.
+url: https://www.exchangerate-api.com/docs/overview
+rateLimits:
+  - plan: Free
+    requestsPerMonth: 1500
+    updateFrequency: daily
+    updateIntervalMinutes: 1440
+    openAccessLimit: true
+    openAccessResetMinutes: 20
+    openAccessEndpoint: https://open.er-api.com/v6/latest/{currency}
+    notes: >
+      Free plan accounts receive 1,500 requests per month. The no-key Open Access
+      endpoint (open.er-api.com) rate-limits by IP; excessive requests receive HTTP 429
+      responses that reset after 20 minutes. Data refreshes once per 24 hours so
+      one request per day is typically sufficient.
+  - plan: Pro
+    requestsPerMonth: 30000
+    updateFrequency: hourly
+    updateIntervalMinutes: 60
+    notes: >
+      Pro plan accounts receive 30,000 requests per month with exchange rate data
+      updated every 60 minutes.
+  - plan: Business
+    requestsPerMonth: 125000
+    updateFrequency: near-realtime
+    updateIntervalMinutes: 5
+    notes: >
+      Business plan accounts receive 125,000 requests per month with exchange rate
+      data updated every 5 minutes.
+  - plan: Volume
+    requestsPerMonth: custom
+    updateFrequency: custom
+    updateIntervalMinutes: custom
+    notes: >
+      Volume plan accounts have custom request quotas and update frequencies
+      negotiated directly with ExchangeRate-API.
+errors:
+  - code: 429
+    description: Rate limit exceeded. For the Open Access endpoint, resets after 20 minutes. For keyed endpoints, quota is monthly and resets on billing cycle.
+  - code: quota-reached
+    description: Monthly request quota exhausted for the account's plan tier. Upgrade plan or wait for next billing cycle reset.
+authentication:
+  - method: url-key
+    description: API key embedded in the request URL path.
+    example: GET https://v6.exchangerate-api.com/v6/{YOUR-API-KEY}/latest/USD
+  - method: bearer-token
+    description: API key passed as Bearer token in Authorization header; omit key from URL.
+    example: "Authorization: Bearer YOUR-API-KEY"

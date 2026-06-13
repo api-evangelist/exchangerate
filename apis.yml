@@ -1,0 +1,86 @@
+aid: exchangerate
+name: ExchangeRate-API
+description: >
+  ExchangeRate-API is a currency exchange rate REST API providing real-time and
+  historical exchange rates for 165 currencies across 200 countries. Operating
+  since 2010, the service delivers reliable currency conversion data via simple
+  HTTP GET requests, supporting both URL-embedded and Bearer token authentication.
+  It offers a free tier with 1,500 monthly requests and daily updates, plus paid
+  plans with hourly or 5-minute update frequencies and higher quotas. The API
+  features over 99.99% measured uptime backed by multi-AZ AWS infrastructure and
+  Cloudflare CDN, with historical data available back to 1990.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/exchangerate/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Currency
+  - Exchange Rates
+  - Finance
+  - Forex
+  - Financial Data
+  - Currency Conversion
+apis:
+  - aid: exchangerate:exchangerate-api
+    name: ExchangeRate-API
+    description: >
+      REST API providing real-time and historical currency exchange rates for 165
+      currencies. Endpoints include latest rates, pair conversion, enriched data
+      with localization, historical rates back to 1990, and supported currency
+      codes. Authentication via API key in URL or Bearer token header.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.exchangerate-api.com
+    baseURL: https://v6.exchangerate-api.com/v6
+    tags:
+      - Currency
+      - Exchange Rates
+      - Finance
+      - Forex
+      - Currency Conversion
+    properties:
+      - type: Documentation
+        url: https://www.exchangerate-api.com/docs/overview
+      - type: OpenAccess
+        url: https://www.exchangerate-api.com/docs/free
+      - type: Authentication
+        url: https://www.exchangerate-api.com/docs/authentication
+      - type: SupportedCurrencies
+        url: https://www.exchangerate-api.com/docs/supported-currencies
+      - type: Pricing
+        url: https://www.exchangerate-api.com/#pricing
+      - type: StatusPage
+        url: https://stats.pingdom.com/qv69spvrz94m/8069768
+      - type: Plans
+        url: plans/exchangerate-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/exchangerate-rate-limits.yml
+      - type: FinOps
+        url: finops/exchangerate-finops.yml
+    contact:
+      - FN: ExchangeRate-API Support
+        email: support@exchangerate-api.com
+common:
+  - type: Website
+    url: https://www.exchangerate-api.com
+  - type: Documentation
+    url: https://www.exchangerate-api.com/docs/overview
+  - type: Pricing
+    url: https://www.exchangerate-api.com/#pricing
+  - type: StatusPage
+    url: https://stats.pingdom.com/qv69spvrz94m/8069768
+  - type: SignUp
+    url: https://app.exchangerate-api.com/sign-up
+  - type: SignIn
+    url: https://app.exchangerate-api.com/sign-in
+  - type: UptimePage
+    url: https://www.exchangerate-api.com/product/uptime
+  - type: Plans
+    url: plans/exchangerate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/exchangerate-rate-limits.yml
+  - type: FinOps
+    url: finops/exchangerate-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

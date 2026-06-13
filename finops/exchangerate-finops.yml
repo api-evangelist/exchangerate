@@ -1,0 +1,57 @@
+name: ExchangeRate-API FinOps
+description: Financial operations guidance for managing ExchangeRate-API costs and usage.
+url: https://www.exchangerate-api.com/#pricing
+costModel:
+  type: subscription
+  billingCycles:
+    - monthly
+    - annual
+  annualDiscount: true
+  annualDiscountNotes: Annual plans offered at approximately 17% savings versus monthly billing (e.g., Pro $100/yr vs $120/yr monthly).
+  overagePolicy: No automatic overage charges. Requests are blocked when monthly quota is exhausted; upgrade required to restore access.
+  freeTrialAvailable: true
+  freeTrialNotes: Free plan available indefinitely at no cost with no credit card required, limited to 1,500 requests/month.
+costOptimization:
+  - recommendation: Cache API responses server-side
+    description: >
+      ExchangeRate-API terms allow caching. Store exchange rate responses in your
+      backend and serve from cache to reduce API calls. Free plan data updates
+      once daily so a single request per day is sufficient for most use cases.
+  - recommendation: Use the Open Access endpoint for prototyping
+    description: >
+      The no-key Open Access endpoint at open.er-api.com is free with attribution
+      and requires no account, ideal for development and low-volume personal projects.
+  - recommendation: Match plan to actual update frequency needs
+    description: >
+      Free plan rates update daily. If your application does not need sub-hourly
+      rate precision, the Free or Pro plan avoids overpaying for Business-tier
+      5-minute updates.
+  - recommendation: Choose annual billing for paid plans
+    description: >
+      Annual billing for the Pro plan ($100/yr) saves roughly $20 compared to
+      monthly ($10 x 12 = $120/yr), and Business ($300/yr) saves $60 annually.
+  - recommendation: Monitor quota via the API Request Quota endpoint
+    description: >
+      Pro and higher plans have access to the /quota endpoint which returns
+      remaining requests for the current billing period, allowing proactive
+      monitoring before quotas are exhausted.
+budgetPlanning:
+  - tier: Development / Prototyping
+    recommendedPlan: Free or Open Access
+    estimatedMonthlyCost: 0
+  - tier: Small Application
+    recommendedPlan: Free
+    estimatedMonthlyCost: 0
+    notes: Up to 1,500 API calls per month, daily rate updates.
+  - tier: Production Application
+    recommendedPlan: Pro
+    estimatedMonthlyCost: 10
+    notes: Up to 30,000 API calls per month, hourly rate updates.
+  - tier: High-Traffic Production
+    recommendedPlan: Business
+    estimatedMonthlyCost: 30
+    notes: Up to 125,000 API calls per month, 5-minute rate updates.
+  - tier: Enterprise / Volume
+    recommendedPlan: Volume
+    estimatedMonthlyCost: custom
+    notes: Custom quota and pricing negotiated with ExchangeRate-API sales.

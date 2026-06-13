@@ -1,0 +1,61 @@
+name: ExchangeRate-API Plans and Pricing
+description: Pricing plans for ExchangeRate-API currency exchange rate service.
+url: https://www.exchangerate-api.com/#pricing
+plans:
+  - name: Free
+    description: Free tier with daily rate updates and limited monthly requests, no credit card required.
+    price: 0
+    currency: USD
+    period: month
+    features:
+      - 1,500 requests per month
+      - Daily rate updates (once per 24 hours)
+      - 165 supported currencies
+      - Standard and Pair Conversion endpoints
+      - Historical data access
+      - High availability infrastructure
+      - Email support
+      - No credit card required
+  - name: Pro
+    description: Professional plan with hourly rate updates and increased request quota.
+    price: 10
+    currency: USD
+    period: month
+    annualPrice: 100
+    annualCurrency: USD
+    features:
+      - 30,000 requests per month
+      - Hourly rate updates (every 60 minutes)
+      - 165 supported currencies
+      - All Standard endpoints
+      - Enriched data (currency names, symbols, flags, regions)
+      - Historical data back to 1990
+      - API Request Quota endpoint
+      - Email support
+  - name: Business
+    description: Business plan with near real-time 5-minute rate updates and high request quota.
+    price: 30
+    currency: USD
+    period: month
+    annualPrice: 300
+    annualCurrency: USD
+    features:
+      - 125,000 requests per month
+      - 5-minute rate updates
+      - 165 supported currencies
+      - All Standard and Advanced endpoints
+      - Enriched data (currency names, symbols, flags, regions)
+      - Historical data back to 1990
+      - API Request Quota endpoint
+      - Priority email support
+  - name: Volume
+    description: Custom high-volume plan for enterprise and large-scale usage needs.
+    price: custom
+    currency: USD
+    period: month
+    features:
+      - Custom request quotas
+      - Custom update frequencies
+      - All endpoints included
+      - Dedicated support
+      - Custom SLA options
