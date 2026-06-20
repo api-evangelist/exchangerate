@@ -9,7 +9,7 @@ description: >
   plans with hourly or 5-minute update frequencies and higher quotas. The API
   features over 99.99% measured uptime backed by multi-AZ AWS infrastructure and
   Cloudflare CDN, with historical data available back to 1990.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/exchangerate/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -29,7 +29,7 @@ apis:
       currencies. Endpoints include latest rates, pair conversion, enriched data
       with localization, historical rates back to 1990, and supported currency
       codes. Authentication via API key in URL or Bearer token header.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.exchangerate-api.com
     baseURL: https://v6.exchangerate-api.com/v6
     tags:
