@@ -77,9 +77,9 @@ common:
     url: https://www.exchangerate-api.com/#pricing
   - type: StatusPage
     url: https://stats.pingdom.com/qv69spvrz94m/8069768
-  - type: SignUp
+  - type: Signup
     url: https://app.exchangerate-api.com/sign-up
-  - type: SignIn
+  - type: Login
     url: https://app.exchangerate-api.com/sign-in
   - type: UptimePage
     url: https://www.exchangerate-api.com/product/uptime
