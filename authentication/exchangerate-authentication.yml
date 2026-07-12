@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/exchangerate-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: 'Pass API key as a Bearer token in the Authorization header (e.g. Authorization:
+    Bearer YOUR-API-KEY). When using this method, omit the API key from the URL path. The path-key
+    endpoints do not use a security scheme in the OpenAPI sense; the {apiKey} path parameter
+    serves as the credential.'
+  sources:
+  - openapi/exchangerate-openapi.yml
