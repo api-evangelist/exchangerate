@@ -69,6 +69,8 @@ apis:
       - FN: ExchangeRate-API Support
         email: support@exchangerate-api.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/exchangerate-agentic-access.yml
   - type: DomainSecurity
     url: security/exchangerate-domain-security.yml
   - type: Authentication
