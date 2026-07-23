@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: ExchangeRate Account API
+  description: 'ExchangeRate-API provides real-time and historical currency exchange rates for 165 currencies across 200 countries. Operating since 2010, the service delivers reliable currency conversion data via simple HTTP GET requests. Authentication is supported via API key embedded in the URL path or via Bearer token header. A free tier is available with 1,500 monthly requests and daily updates; paid plans offer hourly or 5-minute update frequencies and higher quotas. Historical data is available back to 1990.
+
+    '
+  version: '6'
+  termsOfService: https://www.exchangerate-api.com/terms
+  contact:
+    name: ExchangeRate-API Support
+    email: support@exchangerate-api.com
+  x-api-id: exchangerate:exchangerate-api
+  x-provider-name: ExchangeRate-API
+servers:
+- url: https://v6.exchangerate-api.com/v6
+  description: ExchangeRate-API v6 endpoint (API key in URL path)
+- url: https://v6.exchangerate-api.com/v6
+  description: ExchangeRate-API v6 endpoint (Bearer token auth — omit key from path)
+security:
+- BearerAuth: []
+tags:
+- name: Account
+  description: API quota and account information
+paths:
+  /{apiKey}/quota:
+    get:
+      operationId: getQuota
+      summary: Get API request quota information
+      description: 'Returns the remaining request quota for the current billing period along with plan details.
+
+        '
+      tags:
+      - Account
+      security:
+      - {}
+      parameters:
+      - $ref: '#/components/parameters/apiKey'
+      responses:
+        '200':
+          description: Successful response with quota information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaResponse'
+              example:
+                result: success
+                documentation: https://www.exchangerate-api.com/docs
+                terms_of_use: https://www.exchangerate-api.com/terms
+                plan_quota: 1500
+                requests_remaining: 1243
+                refresh_day_of_month: 1
+        '403':
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    apiKey:
+      name: apiKey
+      in: path
+      required: true
+      description: Your personal API key obtained from the ExchangeRate-API dashboard
+      schema:
+        type: string
+        example: YOUR-API-KEY
+  schemas:
+    QuotaResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseMetadata'
+      - type: object
+        required:
+        - result
+        - plan_quota
+        - requests_remaining
+        - refresh_day_of_month
+        properties:
+          plan_quota:
+            type: integer
+            description: Total number of API requests allowed per billing period on your current plan
+            example: 1500
+          requests_remaining:
+            type: integer
+            description: Number of API requests remaining in the current billing period
+            example: 1243
+          refresh_day_of_month:
+            type: integer
+            description: Day of the month when the quota resets
+            minimum: 1
+            maximum: 31
+            example: 1
+    ErrorResponse:
+      type: object
+      required:
+      - result
+      - error-type
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultError'
+        error-type:
+          type: string
+          description: Machine-readable error code
+          enum:
+          - unsupported-code
+          - malformed-request
+          - invalid-key
+          - inactive-account
+          - quota-reached
+          example: invalid-key
+    ResultError:
+      type: string
+      enum:
+      - error
+      description: Indicates the request failed
+    BaseMetadata:
+      type: object
+      description: Common metadata fields returned in all successful responses
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultSuccess'
+        documentation:
+          type: string
+          format: uri
+          description: Link to the API documentation
+          example: https://www.exchangerate-api.com/docs
+        terms_of_use:
+          type: string
+          format: uri
+          description: Link to the terms of use
+          example: https://www.exchangerate-api.com/terms
+    ResultSuccess:
+      type: string
+      enum:
+      - success
+      description: Indicates the request was successful
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Pass API key as a Bearer token in the Authorization header (e.g. Authorization: Bearer YOUR-API-KEY). When using this method, omit the API key from the URL path. The path-key endpoints do not use a security scheme in the OpenAPI sense; the {apiKey} path parameter serves as the credential.
+
+        '
+externalDocs:
+  description: ExchangeRate-API Documentation
+  url: https://www.exchangerate-api.com/docs/overview
