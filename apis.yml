@@ -9,7 +9,20 @@ description: >
   plans with hourly or 5-minute update frequencies and higher quotas. The API
   features over 99.99% measured uptime backed by multi-AZ AWS infrastructure and
   Cloudflare CDN, with historical data available back to 1990.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/exchangerate.png
 url: https://raw.githubusercontent.com/api-evangelist/exchangerate/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -22,52 +35,108 @@ tags:
   - Financial Data
   - Currency Conversion
 apis:
-  - aid: exchangerate:exchangerate-api
-    name: ExchangeRate-API
-    description: >
-      REST API providing real-time and historical currency exchange rates for 165
-      currencies. Endpoints include latest rates, pair conversion, enriched data
-      with localization, historical rates back to 1990, and supported currency
-      codes. Authentication via API key in URL or Bearer token header.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.exchangerate-api.com
-    baseURL: https://v6.exchangerate-api.com/v6
-    tags:
-      - Currency
-      - Exchange Rates
-      - Finance
-      - Forex
-      - Currency Conversion
-    properties:
-      - type: Documentation
-        url: https://www.exchangerate-api.com/docs/overview
-      - type: OpenAccess
-        url: https://www.exchangerate-api.com/docs/free
-      - type: Authentication
-        url: https://www.exchangerate-api.com/docs/authentication
-      - type: SupportedCurrencies
-        url: https://www.exchangerate-api.com/docs/supported-currencies
-      - type: Pricing
-        url: https://www.exchangerate-api.com/#pricing
-      - type: StatusPage
-        url: https://stats.pingdom.com/qv69spvrz94m/8069768
-      - type: Plans
-        url: plans/exchangerate-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/exchangerate-rate-limits.yml
-      - type: FinOps
-        url: finops/exchangerate-finops.yml
-      - type: OpenAPI
-        url: openapi/exchangerate-openapi.yml
-      - type: JSONSchema
-        url: json-schema/exchangerate-schema.json
-      - type: Vocabulary
-        url: vocabulary/exchangerate-vocabulary.yml
-      - type: JSONLDContext
-        url: json-ld/exchangerate-context.jsonld
-    contact:
-      - FN: ExchangeRate-API Support
-        email: support@exchangerate-api.com
+- aid: exchangerate:exchangerate-account-api
+  name: ExchangeRate-API Account API
+  description: API quota and account information
+  humanURL: https://www.exchangerate-api.com
+  baseURL: https://v6.exchangerate-api.com/v6
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/exchangerate-account-api-openapi.yml
+  - type: Documentation
+    url: https://www.exchangerate-api.com/docs/overview
+  - type: OpenAccess
+    url: https://www.exchangerate-api.com/docs/free
+  - type: Authentication
+    url: https://www.exchangerate-api.com/docs/authentication
+  - type: SupportedCurrencies
+    url: https://www.exchangerate-api.com/docs/supported-currencies
+  - type: Pricing
+    url: https://www.exchangerate-api.com/#pricing
+  - type: StatusPage
+    url: https://stats.pingdom.com/qv69spvrz94m/8069768
+  - type: Plans
+    url: plans/exchangerate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/exchangerate-rate-limits.yml
+  - type: FinOps
+    url: finops/exchangerate-finops.yml
+  - type: JSONSchema
+    url: json-schema/exchangerate-schema.json
+  - type: Vocabulary
+    url: vocabulary/exchangerate-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/exchangerate-context.jsonld
+- aid: exchangerate:exchangerate-currencies-api
+  name: ExchangeRate-API Currencies API
+  description: Supported currency codes and metadata
+  humanURL: https://www.exchangerate-api.com
+  baseURL: https://v6.exchangerate-api.com/v6
+  tags:
+  - Currencies
+  properties:
+  - type: OpenAPI
+    url: openapi/exchangerate-currencies-api-openapi.yml
+  - type: Documentation
+    url: https://www.exchangerate-api.com/docs/overview
+  - type: OpenAccess
+    url: https://www.exchangerate-api.com/docs/free
+  - type: Authentication
+    url: https://www.exchangerate-api.com/docs/authentication
+  - type: SupportedCurrencies
+    url: https://www.exchangerate-api.com/docs/supported-currencies
+  - type: Pricing
+    url: https://www.exchangerate-api.com/#pricing
+  - type: StatusPage
+    url: https://stats.pingdom.com/qv69spvrz94m/8069768
+  - type: Plans
+    url: plans/exchangerate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/exchangerate-rate-limits.yml
+  - type: FinOps
+    url: finops/exchangerate-finops.yml
+  - type: JSONSchema
+    url: json-schema/exchangerate-schema.json
+  - type: Vocabulary
+    url: vocabulary/exchangerate-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/exchangerate-context.jsonld
+- aid: exchangerate:exchangerate-exchange-rates-api
+  name: ExchangeRate-API Exchange Rates API
+  description: Real-time and historical currency exchange rate endpoints
+  humanURL: https://www.exchangerate-api.com
+  baseURL: https://v6.exchangerate-api.com/v6
+  tags:
+  - Exchange Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/exchangerate-exchange-rates-api-openapi.yml
+  - type: Documentation
+    url: https://www.exchangerate-api.com/docs/overview
+  - type: OpenAccess
+    url: https://www.exchangerate-api.com/docs/free
+  - type: Authentication
+    url: https://www.exchangerate-api.com/docs/authentication
+  - type: SupportedCurrencies
+    url: https://www.exchangerate-api.com/docs/supported-currencies
+  - type: Pricing
+    url: https://www.exchangerate-api.com/#pricing
+  - type: StatusPage
+    url: https://stats.pingdom.com/qv69spvrz94m/8069768
+  - type: Plans
+    url: plans/exchangerate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/exchangerate-rate-limits.yml
+  - type: FinOps
+    url: finops/exchangerate-finops.yml
+  - type: JSONSchema
+    url: json-schema/exchangerate-schema.json
+  - type: Vocabulary
+    url: vocabulary/exchangerate-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/exchangerate-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/exchangerate-agentic-access.yml
