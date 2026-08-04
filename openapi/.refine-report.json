@@ -1,0 +1,18 @@
+{
+  "provider": "exchangerate",
+  "sources": [
+    "exchangerate-account-api-openapi.yml",
+    "exchangerate-currencies-api-openapi.yml",
+    "exchangerate-exchange-rates-api-openapi.yml"
+  ],
+  "outputs": [
+    "exchangerate-account-api-openapi.yml",
+    "exchangerate-currencies-api-openapi.yml",
+    "exchangerate-exchange-rates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
