@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "556f6883-c460-495a-af67-c986d005d5ea",
+      "name": "Currencies",
+      "description": {
+        "content": "Supported currency codes and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52dc2f41-bb24-47e7-a602-d81e42c0d2cb",
+          "name": "Get all supported currency codes",
+          "request": {
+            "name": "Get all supported currency codes",
+            "description": {
+              "content": "Returns a list of all 165 supported currencies with their ISO 4217 codes and full names.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":apiKey",
+                "codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKey",
+                  "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "c4d616a7-7e5b-4650-b518-b2fb54b8e080",
+              "name": "Successful response with supported currency codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"supported_codes\": [\n    [\n      \"AED\",\n      \"UAE Dirham\"\n    ],\n    [\n      \"AFN\",\n      \"Afghan Afghani\"\n    ],\n    [\n      \"ARS\",\n      \"Argentine Peso\"\n    ],\n    [\n      \"AUD\",\n      \"Australian Dollar\"\n    ],\n    [\n      \"EUR\",\n      \"Euro\"\n    ],\n    [\n      \"GBP\",\n      \"Pound Sterling\"\n    ],\n    [\n      \"USD\",\n      \"US Dollar\"\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922722a5-38b5-4cbe-b1f9-14398bf7122c",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://v6.exchangerate-api.com/v6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e160c66-2fc3-4fbf-a389-07640d5f5492",
+    "name": "ExchangeRate Account Currencies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ExchangeRate-API provides real-time and historical currency exchange rates for 165 currencies across 200 countries. Operating since 2010, the service delivers reliable currency conversion data via simple HTTP GET requests. Authentication is supported via API key embedded in the URL path or via Bearer token header. A free tier is available with 1,500 monthly requests and daily updates; paid plans offer hourly or 5-minute update frequencies and higher quotas. Historical data is available back to 1990.\n\n\nContact Support:\n Name: ExchangeRate-API Support\n Email: support@exchangerate-api.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ExchangeRate Account Exchange Rates API",
+    "version": "6"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchange Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get latest exchange rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/:apiKey/latest/:baseCurrency",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your personal API key obtained from the ExchangeRate-API dashboard"
+              },
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+              }
+            ]
+          },
+          "docs": "Returns the latest exchange rates for all supported currencies relative to the supplied base currency. Available on all plans including the free tier.\n"
+        },
+        {
+          "info": {
+            "name": "Get latest exchange rates (Bearer token auth)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/latest/:baseCurrency",
+            "params": [
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the latest exchange rates for all supported currencies relative to the supplied base currency. Uses Bearer token authentication via the Authorization header rather than an API key in the URL path.\n"
+        },
+        {
+          "info": {
+            "name": "Get conversion rate for a currency pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/:apiKey/pair/:baseCurrency/:targetCurrency",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your personal API key obtained from the ExchangeRate-API dashboard"
+              },
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+              },
+              {
+                "name": "targetCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+              }
+            ]
+          },
+          "docs": "Returns the conversion rate between two specific currencies. Provides a minimal JSON response focused on the pair relationship. Available on all plans.\n"
+        },
+        {
+          "info": {
+            "name": "Convert an amount between a currency pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/:apiKey/pair/:baseCurrency/:targetCurrency/:amount",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your personal API key obtained from the ExchangeRate-API dashboard"
+              },
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+              },
+              {
+                "name": "targetCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "path",
+                "description": "The amount to convert (decimal format, e.g. 1234.5678)"
+              }
+            ]
+          },
+          "docs": "Returns the conversion rate between two currencies and the result of converting the specified amount. Available on all plans.\n"
+        },
+        {
+          "info": {
+            "name": "Get historical exchange rates for a specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/:apiKey/history/:baseCurrency/:year/:month/:day",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your personal API key obtained from the ExchangeRate-API dashboard"
+              },
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "Four-digit year (e.g. 2023)"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path",
+                "description": "Month number (1-12)"
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path",
+                "description": "Day of month (1-31)"
+              }
+            ]
+          },
+          "docs": "Returns exchange rates for all supported currencies on a specific historical date. Historical data is available back to 1990. Requires a paid subscription plan.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

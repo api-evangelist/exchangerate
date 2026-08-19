@@ -1,0 +1,1333 @@
+{
+  "item": [
+    {
+      "id": "8cf4533f-a917-4884-aab7-4415be8f9e96",
+      "name": "Exchange Rates",
+      "description": {
+        "content": "Real-time and historical currency exchange rate endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18384e65-b786-41fc-b9b5-dead27f48757",
+          "name": "Get latest exchange rates",
+          "request": {
+            "name": "Get latest exchange rates",
+            "description": {
+              "content": "Returns the latest exchange rates for all supported currencies relative to the supplied base currency. Available on all plans including the free tier.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":apiKey",
+                "latest",
+                ":baseCurrency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKey",
+                  "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "e80d488b-218d-490a-9d93-d75b41c046d0",
+              "name": "Successful response with latest exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"time_last_update_unix\": 1585267200,\n  \"time_last_update_utc\": \"Fri, 27 Mar 2020 00:00:00 +0000\",\n  \"time_next_update_unix\": 1585353600,\n  \"time_next_update_utc\": \"Sat, 28 Mar 2020 00:00:00 +0000\",\n  \"base_code\": \"USD\",\n  \"conversion_rates\": {\n    \"USD\": 1,\n    \"EUR\": 0.8876,\n    \"GBP\": 0.7901,\n    \"JPY\": 107.53\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4766b58-5e37-4609-8e57-e0acad52cca2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a8ab1f1-67b7-460f-8f3d-c524e8b8f831",
+              "name": "Authentication error (invalid key, inactive account, quota reached)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f52a157-647e-4aaa-ac8f-2816af7486ec",
+              "name": "Unsupported currency code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aeafccc-a674-4083-83ee-c1460ed7af3e",
+          "name": "Get latest exchange rates (Bearer token auth)",
+          "request": {
+            "name": "Get latest exchange rates (Bearer token auth)",
+            "description": {
+              "content": "Returns the latest exchange rates for all supported currencies relative to the supplied base currency. Uses Bearer token authentication via the Authorization header rather than an API key in the URL path.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "latest",
+                ":baseCurrency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4acd0fa-3f71-41fe-a1e0-d3ae1cd54e2b",
+              "name": "Successful response with latest exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"base_code\": \"USD\",\n  \"conversion_rates\": {\n    \"USD\": 1,\n    \"EUR\": 0.8876,\n    \"GBP\": 0.7901,\n    \"JPY\": 107.53\n  },\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"time_last_update_unix\": 1585267200,\n  \"time_last_update_utc\": \"Fri, 27 Mar 2020 00:00:00 +0000\",\n  \"time_next_update_unix\": 1585353600,\n  \"time_next_update_utc\": \"Sat, 28 Mar 2020 00:00:00 +0000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "492e9a53-e893-422a-a41f-8018dbe9f730",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06220e0a-6c2f-4fd3-8271-90d31e3a340d",
+              "name": "Unsupported currency code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "latest",
+                    ":baseCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f767e4c2-530a-44c7-84b9-e90b4f258378",
+          "name": "Get conversion rate for a currency pair",
+          "request": {
+            "name": "Get conversion rate for a currency pair",
+            "description": {
+              "content": "Returns the conversion rate between two specific currencies. Provides a minimal JSON response focused on the pair relationship. Available on all plans.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":apiKey",
+                "pair",
+                ":baseCurrency",
+                ":targetCurrency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKey",
+                  "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "001badc2-cfb1-478c-b318-f489bece0955",
+              "name": "Successful pair conversion rate response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"time_last_update_unix\": 1585267200,\n  \"time_last_update_utc\": \"Fri, 27 Mar 2020 00:00:00 +0000\",\n  \"time_next_update_unix\": 1585353600,\n  \"time_next_update_utc\": \"Sat, 28 Mar 2020 00:00:00 +0000\",\n  \"base_code\": \"EUR\",\n  \"target_code\": \"GBP\",\n  \"conversion_rate\": 0.8412\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d78519d-1c6e-4764-a749-28ad019f4efb",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b604ee0e-f670-488a-9553-7b5699efa68a",
+              "name": "Unsupported currency code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3a1b3ea-c596-42a6-acd2-0c85d8ca46d1",
+          "name": "Convert an amount between a currency pair",
+          "request": {
+            "name": "Convert an amount between a currency pair",
+            "description": {
+              "content": "Returns the conversion rate between two currencies and the result of converting the specified amount. Available on all plans.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":apiKey",
+                "pair",
+                ":baseCurrency",
+                ":targetCurrency",
+                ":amount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKey",
+                  "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "targetCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<double>",
+                  "key": "amount",
+                  "description": "(Required) The amount to convert (decimal format, e.g. 1234.5678)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "3fd9af55-7423-463f-99bf-114f0cf70668",
+              "name": "Successful pair conversion response with conversion result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency",
+                    ":amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<double>",
+                      "key": "amount",
+                      "description": "(Required) The amount to convert (decimal format, e.g. 1234.5678)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"time_last_update_unix\": 1585267200,\n  \"time_last_update_utc\": \"Fri, 27 Mar 2020 00:00:00 +0000\",\n  \"time_next_update_unix\": 1585353600,\n  \"time_next_update_utc\": \"Sat, 28 Mar 2020 00:00:00 +0000\",\n  \"base_code\": \"EUR\",\n  \"target_code\": \"GBP\",\n  \"conversion_rate\": 0.8412,\n  \"conversion_result\": 5.8884\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2854eaf-cf4f-489f-bdde-cb42c0866862",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency",
+                    ":amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<double>",
+                      "key": "amount",
+                      "description": "(Required) The amount to convert (decimal format, e.g. 1234.5678)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d3af324-a516-4409-ab29-c8a98b711243",
+              "name": "Unsupported currency code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "pair",
+                    ":baseCurrency",
+                    ":targetCurrency",
+                    ":amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "targetCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the target currency (e.g. GBP, JPY)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<double>",
+                      "key": "amount",
+                      "description": "(Required) The amount to convert (decimal format, e.g. 1234.5678)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b41148b5-0fb4-4fbf-8921-ddd1845a76be",
+          "name": "Get historical exchange rates for a specific date",
+          "request": {
+            "name": "Get historical exchange rates for a specific date",
+            "description": {
+              "content": "Returns exchange rates for all supported currencies on a specific historical date. Historical data is available back to 1990. Requires a paid subscription plan.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":apiKey",
+                "history",
+                ":baseCurrency",
+                ":year",
+                ":month",
+                ":day"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiKey",
+                  "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseCurrency",
+                  "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) Four-digit year (e.g. 2023)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "month",
+                  "description": "(Required) Month number (1-12)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "day",
+                  "description": "(Required) Day of month (1-31)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "3d75fc41-5dad-4794-967f-3991ee13a114",
+              "name": "Successful response with historical exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "history",
+                    ":baseCurrency",
+                    ":year",
+                    ":month",
+                    ":day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) Four-digit year (e.g. 2023)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) Month number (1-12)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "day",
+                      "description": "(Required) Day of month (1-31)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"success\",\n  \"documentation\": \"https://www.exchangerate-api.com/docs\",\n  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n  \"base_code\": \"USD\",\n  \"year\": 2023,\n  \"month\": 3,\n  \"day\": 15,\n  \"requested_time\": \"2023-03-15T00:00:01+00:00\",\n  \"conversion_rates\": {\n    \"USD\": 1,\n    \"EUR\": 0.9343,\n    \"GBP\": 0.8192\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e4d6a13-163d-4967-9ea7-5832a2cfac65",
+              "name": "Authentication error or plan restriction",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "history",
+                    ":baseCurrency",
+                    ":year",
+                    ":month",
+                    ":day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) Four-digit year (e.g. 2023)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) Month number (1-12)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "day",
+                      "description": "(Required) Day of month (1-31)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20431216-71ac-4b6b-a325-b1588caa796a",
+              "name": "Unsupported currency code or date out of range",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":apiKey",
+                    "history",
+                    ":baseCurrency",
+                    ":year",
+                    ":month",
+                    ":day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiKey",
+                      "description": "(Required) Your personal API key obtained from the ExchangeRate-API dashboard"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseCurrency",
+                      "description": "(Required) ISO 4217 three-letter currency code for the base currency (e.g. USD, EUR, GBP)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) Four-digit year (e.g. 2023)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) Month number (1-12)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "day",
+                      "description": "(Required) Day of month (1-31)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"error\",\n  \"error-type\": \"invalid-key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://v6.exchangerate-api.com/v6",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0db8cf87-7d2d-49a2-9e81-740a3f4f3c75",
+    "name": "ExchangeRate Account Exchange Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ExchangeRate-API provides real-time and historical currency exchange rates for 165 currencies across 200 countries. Operating since 2010, the service delivers reliable currency conversion data via simple HTTP GET requests. Authentication is supported via API key embedded in the URL path or via Bearer token header. A free tier is available with 1,500 monthly requests and daily updates; paid plans offer hourly or 5-minute update frequencies and higher quotas. Historical data is available back to 1990.\n\n\nContact Support:\n Name: ExchangeRate-API Support\n Email: support@exchangerate-api.com",
+      "type": "text/plain"
+    }
+  }
+}

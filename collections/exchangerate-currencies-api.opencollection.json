@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ExchangeRate Account Currencies API",
+    "version": "6"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Currencies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all supported currency codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://v6.exchangerate-api.com/v6/:apiKey/codes",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your personal API key obtained from the ExchangeRate-API dashboard"
+              }
+            ]
+          },
+          "docs": "Returns a list of all 165 supported currencies with their ISO 4217 codes and full names.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
