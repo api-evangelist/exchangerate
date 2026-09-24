@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ExchangeRate Account API
   description: 'ExchangeRate-API provides real-time and historical currency exchange rates for 165 currencies across 200 countries. Operating since 2010, the service delivers reliable currency conversion data via simple HTTP GET requests. Authentication is supported via API key embedded in the URL path or via Bearer token header. A free tier is available with 1,500 monthly requests and daily updates; paid plans offer hourly or 5-minute update frequencies and higher quotas. Historical data is available back to 1990.
@@ -56,16 +56,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    apiKey:
-      name: apiKey
-      in: path
-      required: true
-      description: Your personal API key obtained from the ExchangeRate-API dashboard
-      schema:
-        type: string
-        example: YOUR-API-KEY
   schemas:
+    BaseMetadata:
+      type: object
+      description: Common metadata fields returned in all successful responses
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultSuccess'
+        documentation:
+          type: string
+          format: uri
+          description: Link to the API documentation
+          example: https://www.exchangerate-api.com/docs
+        terms_of_use:
+          type: string
+          format: uri
+          description: Link to the terms of use
+          example: https://www.exchangerate-api.com/terms
+    ErrorResponse:
+      type: object
+      required:
+      - result
+      - error-type
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultError'
+        error-type:
+          type: string
+          description: Machine-readable error code
+          enum:
+          - unsupported-code
+          - malformed-request
+          - invalid-key
+          - inactive-account
+          - quota-reached
+          example: invalid-key
+    ResultSuccess:
+      type: string
+      enum:
+      - success
+      description: Indicates the request was successful
     QuotaResponse:
       allOf:
       - $ref: '#/components/schemas/BaseMetadata'
@@ -90,50 +120,20 @@ components:
             minimum: 1
             maximum: 31
             example: 1
-    ErrorResponse:
-      type: object
-      required:
-      - result
-      - error-type
-      properties:
-        result:
-          $ref: '#/components/schemas/ResultError'
-        error-type:
-          type: string
-          description: Machine-readable error code
-          enum:
-          - unsupported-code
-          - malformed-request
-          - invalid-key
-          - inactive-account
-          - quota-reached
-          example: invalid-key
     ResultError:
       type: string
       enum:
       - error
       description: Indicates the request failed
-    BaseMetadata:
-      type: object
-      description: Common metadata fields returned in all successful responses
-      properties:
-        result:
-          $ref: '#/components/schemas/ResultSuccess'
-        documentation:
-          type: string
-          format: uri
-          description: Link to the API documentation
-          example: https://www.exchangerate-api.com/docs
-        terms_of_use:
-          type: string
-          format: uri
-          description: Link to the terms of use
-          example: https://www.exchangerate-api.com/terms
-    ResultSuccess:
-      type: string
-      enum:
-      - success
-      description: Indicates the request was successful
+  parameters:
+    apiKey:
+      name: apiKey
+      in: path
+      required: true
+      description: Your personal API key obtained from the ExchangeRate-API dashboard
+      schema:
+        type: string
+        example: YOUR-API-KEY
   securitySchemes:
     BearerAuth:
       type: http

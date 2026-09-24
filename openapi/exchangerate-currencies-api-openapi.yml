@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ExchangeRate Account Currencies API
   description: 'ExchangeRate-API provides real-time and historical currency exchange rates for 165 currencies across 200 countries. Operating since 2010, the service delivers reliable currency conversion data via simple HTTP GET requests. Authentication is supported via API key embedded in the URL path or via Bearer token header. A free tier is available with 1,500 monthly requests and daily updates; paid plans offer hourly or 5-minute update frequencies and higher quotas. Historical data is available back to 1990.
@@ -95,6 +95,22 @@ components:
               - US Dollar
             - - EUR
               - Euro
+    BaseMetadata:
+      type: object
+      description: Common metadata fields returned in all successful responses
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultSuccess'
+        documentation:
+          type: string
+          format: uri
+          description: Link to the API documentation
+          example: https://www.exchangerate-api.com/docs
+        terms_of_use:
+          type: string
+          format: uri
+          description: Link to the terms of use
+          example: https://www.exchangerate-api.com/terms
     ErrorResponse:
       type: object
       required:
@@ -113,32 +129,16 @@ components:
           - inactive-account
           - quota-reached
           example: invalid-key
-    BaseMetadata:
-      type: object
-      description: Common metadata fields returned in all successful responses
-      properties:
-        result:
-          $ref: '#/components/schemas/ResultSuccess'
-        documentation:
-          type: string
-          format: uri
-          description: Link to the API documentation
-          example: https://www.exchangerate-api.com/docs
-        terms_of_use:
-          type: string
-          format: uri
-          description: Link to the terms of use
-          example: https://www.exchangerate-api.com/terms
-    ResultError:
-      type: string
-      enum:
-      - error
-      description: Indicates the request failed
     ResultSuccess:
       type: string
       enum:
       - success
       description: Indicates the request was successful
+    ResultError:
+      type: string
+      enum:
+      - error
+      description: Indicates the request failed
   parameters:
     apiKey:
       name: apiKey
